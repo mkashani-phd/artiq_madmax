@@ -146,7 +146,7 @@
             "properties": {
                 "type": {
                     "type": "string",
-                    "enum": ["dio", "dio_spi", "urukul", "novogorny", "sampler", "suservo", "zotino", "grabber", "mirny", "fastino", "phaser", "phaser_drtio", "hvamp", "shuttler", "songbird", "coaxpress_sfp"]
+                    "enum": ["dio", "dio_spi", "urukul", "novogorny", "sampler", "suservo", "zotino", "grabber", "mirny", "fastino", "phaser", "phaser_drtio", "hvamp", "shuttler", "songbird", "coaxpress_sfp", "entangler"]
                 },
                 "board": {
                     "type": "string"
@@ -774,7 +774,53 @@
                         }
                     }
                 }
-            }]
+            },
+            {
+                    "title": "Entangler",
+                    "if": {
+                        "properties": {
+                            "type": {
+                                "const": "entangler"
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "ports": {
+                                "type": "array",
+                                "items": {
+                                    "type": "integer",
+                                    "minimum": 0
+                                },
+                                "minItems": 1
+                            },
+                            "uses_reference": {
+                                "type": "boolean",
+                                "default": false
+                            },
+                            "running_output": {
+                                "type": "boolean",
+                                "default": false
+                            },
+                            "link_eem": {
+                                "type": "integer",
+                                "minimum": 0
+                            },
+                            "interface_on_lower": {
+                                "type": "boolean",
+                                "default": true
+                            },
+                            "edge_counter": {
+                                "type": "boolean",
+                                "default": false
+                            }
+                        },
+                        "required": [
+                            "ports"
+                        ]
+                    }
+                }
+            ]
         },
 
         "urukul_ports_pair": {
